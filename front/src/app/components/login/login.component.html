@@ -1,0 +1,76 @@
+<section class="login">
+  <div class="title">
+    <p>Bienvinidos a</p>
+    <p>Unicomer</p>
+  </div>
+
+  <div class="form">
+    <div>
+      <p>LOGO</p>
+    </div>
+
+    <div>
+      <form name="loginForm" [formGroup]="loginForm" novalidate>
+        <label>Tipo de documento</label>
+        <mat-form-field appearance="outline">
+          <div class="input">
+            <input matInput formControlName="documento">
+          </div>
+          <mat-error>
+            Ingrese un documento
+          </mat-error>
+          <mat-error>
+            Ingrese una tipo de documento válido
+          </mat-error>
+        </mat-form-field>
+
+        <label>Número de documento</label>
+        <mat-form-field appearance="outline">
+          <div>
+            <input matInput formControlName="numeroDocumento">
+            <div class="ojito">
+              <img src=" ">
+              <img src="">
+            </div>
+          </div>
+          <mat-error>
+            Ingrese contraseña
+          </mat-error>
+        </mat-form-field>
+
+        <label>Clave</label>
+        <mat-form-field appearance="outline">
+          <div>
+            <input matInput formControlName="clave">
+          </div>
+          <mat-error>
+            Ingrese una clave
+          </mat-error>
+          <mat-error>
+            Ingrese clave válida
+          </mat-error>
+        </mat-form-field>
+
+        <div class="botonera">
+          <button (click)="LogIn()" class="btn btn-primary"
+                  aria-label="LOG IN">
+            Ingresar
+          </button>
+        </div>
+
+        <div class="remember-forgot-password">
+          <mat-error>
+
+          </mat-error>
+        </div>
+      </form>
+    </div>
+
+    <div>
+      <p>Teclado Virtual</p>
+      <p>¿No tenes cuenta? Registrate aquí</p>
+    </div>
+
+  </div>
+
+</section>
