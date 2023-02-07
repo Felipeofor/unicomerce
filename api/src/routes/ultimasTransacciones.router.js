@@ -13,7 +13,9 @@ client.connect(() => {
         try {
             ultimasTransacciones.find({}).then((r) => {
                 if (r.length > 10) {
-                    res.send(r.sort((a, b) => b.fecha - a.fecha).slice(0, 10));
+                    const sort =r.sort((a, b) => b.fecha - a.fecha).slice(0, 10)
+                    console.log(sort)
+                    res.send(sort);
                 } else {
                     res.send(r.sort((a, b) => b.fecha - a.fecha));
                 }

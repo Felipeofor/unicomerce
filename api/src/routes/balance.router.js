@@ -13,6 +13,7 @@ client.connect(() => {
         // Traer todos los balances
         try {
             balance.find({}).then((r) => {
+                console.log(r)
                 res.send(r)
             });
         } catch (error) {
