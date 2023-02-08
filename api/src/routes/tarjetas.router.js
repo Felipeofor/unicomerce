@@ -20,22 +20,23 @@ client.connect(() => {
 
     routerTarjetas.post('/', (req, res) => {
         const {name, dateExp, number, cvv} = req.body;
-        const newTarjeta = new tarjetas({
-            name: name,
-            dateExp: dateExp,
-            number: number,
-            cvv: cvv,
-        });
-        mongoose.connect(URL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-        try {
+        if (!name || !dateExp || !number || !cvv) {
+            res.send('Faltan datos');
+            const newTarjeta = new tarjetas({
+                name: name,
+                dateExp: dateExp,
+                number: number,
+                cvv: cvv,
+            });
+            mongoose.connect(URL, {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+            });
             newTarjeta.save().then((r) => {
                 res.send('Tarjeta creada');
             });
-        } catch (error) {
-            res.send(error);
+        } else {
+            res.send('Faltan datos');
         }
     });
 
