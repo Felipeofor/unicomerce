@@ -9,6 +9,7 @@ mongoose.set("strictQuery", false);
 client.connect(() => {
 
     routerTarjetas.get('/', (req, res) => {
+        res.header("Access-Control-Allow-Origin", "*");
         try {
             tarjetas.find({}).then(async (r) => {
                 res.send(await r);

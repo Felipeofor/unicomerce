@@ -9,6 +9,7 @@ mongoose.set("strictQuery", false);
 client.connect(() => {
 
     routerMenu.get('/',((req, res) => {
+        res.header("Access-Control-Allow-Origin", "*");
         try{
             menu.find({}).then((r) => {
                 res.send(r);
