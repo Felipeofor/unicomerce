@@ -9,15 +9,15 @@ mongoose.set("strictQuery", false);
 client.connect(() => {
 
     routerUTransacciones.get('/', (req, res) => {
+        res.header("Access-Control-Allow-Origin", "*");
         // Solo traer las ultimas 10 transacciones
         try {
-            ultimasTransacciones.find({}).then((r) => {
+            ultimasTransacciones.find({}).then(async (r) => {
                 if (r.length > 10) {
-                    const sort =r.sort((a, b) => b.fecha - a.fecha).slice(0, 10)
-                    console.log(sort)
+                    const sort = await r.sort((a, b) => b.fecha - a.fecha).slice(0, 10)
                     res.send(sort);
                 } else {
-                    res.send(r.sort((a, b) => b.fecha - a.fecha));
+                    res.send(await r.sort((a, b) => b.fecha - a.fecha));
                 }
             });
         } catch (error) {

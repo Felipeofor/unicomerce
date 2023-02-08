@@ -8,10 +8,10 @@ mongoose.set("strictQuery", false);
 
 client.connect(() => {
 
-    routerTarjetas.get('/',(req, res) => {
+    routerTarjetas.get('/', (req, res) => {
         try {
-            tarjetas.find({}).then((r) => {
-                res.send(r);
+            tarjetas.find({}).then(async (r) => {
+                res.send(await r);
             });
         } catch (error) {
             res.send(error);

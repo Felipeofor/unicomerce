@@ -10,6 +10,7 @@ mongoose.set("strictQuery", false);
 client.connect(() => {
 
     routerBalance.get('/', (req, res) => {
+        res.header("Access-Control-Allow-Origin", "*");
         // Traer todos los balances
         try {
             balance.find({}).then((r) => {
