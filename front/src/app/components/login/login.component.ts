@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {BalanceService} from "../../services/balance.service";
 import {UltimasTransaccionesService} from "../../services/ultimasTransacciones.service";
+import {provideRouter} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -61,6 +62,10 @@ export class LoginComponent implements OnInit {
 
   LogIn(){
     console.log('login')
+  }
+
+  registrate(){
+    console.log('registrate')
   }
 
 }

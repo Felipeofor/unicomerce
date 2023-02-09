@@ -4,34 +4,24 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const { client, URL } = require("../db/dbConfig");
 const Logins = require("../models/login.model.js");
-const {normalizeType} = require("express/lib/utils");
 const routerUser = Router();
 mongoose.set("strictQuery", false);
 
 client.connect(() => {
     const usuarios = client.db("test").collection("logins");
 
-    routerUser.get("/", (req, res) => {
-        try {
-            res.send("OK");
-        }
-        catch (error) {
-            res.send(error);
-        }
-    });
-
     routerUser.post("/", (req, res) => {
         try {
-            const {usuario, password} = req.body;
+            const {tipoDocumento, nroDocumento, clave} = req.body;
             // Usuario ya existe
-            usuarios.findOne({usuario: usuario}).then((r) => {
+            usuarios.findOne({nroDocumento: nroDocumento}).then((r) => {
                 mongoose.connect(URL, {
                     useNewUrlParser: true,
                     useUnifiedTopology: true,
                 });
                 // Usuario existe
                 if (r) {
-                        if (r.password === password) {
+                        if (r.clave === clave) {
                             res.status(200).send("Usuario existente");
                         } else {
                             res.status(200).send("Usuario o contraseña incorrectos");
@@ -50,20 +40,21 @@ client.connect(() => {
 
     routerUser.post("/register", (req, res) => {
         try {
-            const {usuario, password} = req.body;
-            usuarios.findOne({usuario: usuario}).then((r) => {
+            const {tipoDocumento, nroDocumento, clave} = req.body;
+            usuarios.findOne({nroDocumento: nroDocumento}).then((r) => {
                 if (r) {
                     res.send("Usuario ya existe");
                 } else {
-                    bcrypt.hash(password, 10).then((hash) => {
+                    bcrypt.hash(clave, 10).then((hash) => {
                         mongoose.connect(URL, {
                                 useNewUrlParser: true,
                                 useUnifiedTopology: true,
                             }
                         );
                         const newLogin = new Logins({
-                            usuario: usuario,
-                            password: password,
+                            tipoDocumento: tipoDocumento,
+                            nroDocumento: nroDocumento,
+                            clave: clave,
                         });
                         newLogin.save().then((r) => {
                             res.send("Usuario creado");
