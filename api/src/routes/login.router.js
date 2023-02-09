@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const { client, URL } = require("../db/dbConfig");
 const Logins = require("../models/login.model.js");
+const {normalizeType} = require("express/lib/utils");
 const routerUser = Router();
 mongoose.set("strictQuery", false);
 
@@ -28,22 +29,22 @@ client.connect(() => {
                     useNewUrlParser: true,
                     useUnifiedTopology: true,
                 });
-                    if (r) {
-                        // Comparar password
-                        bcrypt.compare(password, r.password).then((r) => {
-                            if (r) {
-                                res.status(200).send("OK");
-                            } else {
-                                res.status(200).send("Usuario o contraseña incorrectos");
-                            }
-                        });
-                    } else {
-                        res.status(400).send("Usuario o contraseña incorrectos");
-                    }
+                // Usuario existe
+                if (r) {
+                        if (r.password === password) {
+                            res.status(200).send("Usuario existente");
+                        } else {
+                            res.status(200).send("Usuario o contraseña incorrectos");
+                        }
                 }
-            );
-        } catch (error) {
-            res.send(error);
+                // Usuario no existe
+                else {
+                    res.status(200).send("Usuario no existe");
+                }
+            });
+        }
+        catch (error) {
+            res.status(400).send(error);
         }
     });
 
