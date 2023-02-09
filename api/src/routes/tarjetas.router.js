@@ -10,12 +10,16 @@ client.connect(() => {
 
     routerTarjetas.get('/', (req, res) => {
         res.header("Access-Control-Allow-Origin", "*");
+        mongoose.connect(URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
         try {
             tarjetas.find({}).then(async (r) => {
-                res.send(await r);
+                res.status(200).send(await r);
             });
         } catch (error) {
-            res.send(error);
+            res.status(400).send(error);
         }
     });
 

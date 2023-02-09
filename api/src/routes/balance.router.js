@@ -10,15 +10,18 @@ mongoose.set("strictQuery", false);
 client.connect(() => {
 
     routerBalance.get('/', (req, res) => {
+        mongoose.connect(URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
         res.header("Access-Control-Allow-Origin", "*");
         // Traer todos los balances
         try {
             balance.find({}).then((r) => {
-                console.log(r)
-                res.send(r)
+                res.status(200).send(r);
             });
         } catch (error) {
-            res.send(error);
+            res.status(400).send(error);
         }
     });
 

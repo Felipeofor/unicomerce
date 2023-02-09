@@ -10,18 +10,22 @@ client.connect(() => {
 
     routerUTransacciones.get('/', (req, res) => {
         res.header("Access-Control-Allow-Origin", "*");
+        mongoose.connect(URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
         // Solo traer las ultimas 10 transacciones
         try {
             ultimasTransacciones.find({}).then(async (r) => {
                 if (r.length > 10) {
                     const sort = await r.sort((a, b) => b.fecha - a.fecha).slice(0, 10)
-                    res.send(sort);
+                    res.status(200).send(sort);
                 } else {
-                    res.send(await r.sort((a, b) => b.fecha - a.fecha));
+                    res.status(200).send(await r.sort((a, b) => b.fecha - a.fecha));
                 }
             });
         } catch (error) {
-            res.send(error);
+            res.status(400).send(error);
         }
     });
     // Crea una transaccion

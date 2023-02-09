@@ -24,17 +24,21 @@ client.connect(() => {
             const {usuario, password} = req.body;
             // Usuario ya existe
             usuarios.findOne({usuario: usuario}).then((r) => {
+                mongoose.connect(URL, {
+                    useNewUrlParser: true,
+                    useUnifiedTopology: true,
+                });
                     if (r) {
                         // Comparar password
                         bcrypt.compare(password, r.password).then((r) => {
                             if (r) {
-                                res.send("Usuario logeado");
+                                res.status(200).send("OK");
                             } else {
-                                res.send("Usuario o contraseña incorrectos");
+                                res.status(200).send("Usuario o contraseña incorrectos");
                             }
                         });
                     } else {
-                        res.send("Usuario o contraseña incorrectos");
+                        res.status(400).send("Usuario o contraseña incorrectos");
                     }
                 }
             );
