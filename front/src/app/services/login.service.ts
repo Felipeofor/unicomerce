@@ -15,9 +15,8 @@ import {environment} from "../../environment";
 
   url: string = environment.url;
 
-    public login(tipoDocumento: string, nroDocumento: string, clave: string): Observable<any> {
+    public login(tipoDocumento: string | null | undefined, nroDocumento: string | null | undefined, clave: string | null | undefined): Observable<any> {
       const url = `${this.url}/login`;
-      console.log(JSON.stringify({tipoDocumento: tipoDocumento, nroDocumento: nroDocumento, clave: clave}));
       return this.http.post<any>(url, JSON.stringify({tipoDocumento: tipoDocumento, nroDocumento: nroDocumento, clave: clave}), {responseType: 'text' as 'json'});
     }
 

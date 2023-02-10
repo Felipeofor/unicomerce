@@ -66,15 +66,25 @@ export class LoginComponent implements OnInit {
 
 
   LogIn() {
-    const documento = "DNI"
-    const nroDocumento = "11000111"
-    const clave = "22222"
+    const documento = this.form.get("tipoDocumento")?.value;
+    const nroDocumento = this.form.get('nroDocumento')?.value;
+    const clave = this.form.get('clave')?.value;
     if (this.form.invalid) {
       console.log('invalido')
     } else {
       this.loginService.login(documento, nroDocumento, clave).subscribe(
         (data) => {
-          console.log(data);
+          switch (data){
+            case 'Usuario no existe':
+              console.log('Usuario no existe');
+              break;
+            case 'Usuario o contraseña incorrectos':
+              console.log('Usuario o contraseña incorrectos');
+              break;
+            case 'Usuario existente':
+              console.log('Usuario existente');
+              break;
+          }
         }
       );
     }
