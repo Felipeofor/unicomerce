@@ -15,13 +15,10 @@ import {environment} from "../../environment";
 
   url: string = environment.url;
 
-    public login(tipoDocumento: string , nroDocumento: string , clave: string ): Observable<any> {
+    public login(tipoDocumento: string, nroDocumento: string, clave: string): Observable<any> {
       const url = `${this.url}/login`;
-      const headers = new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      });
-      return this.http.post<any>(url, {tipoDocumento, nroDocumento, clave}, {headers});
+      console.log(JSON.stringify({tipoDocumento: tipoDocumento, nroDocumento: nroDocumento, clave: clave}));
+      return this.http.post<any>(url, JSON.stringify({tipoDocumento: tipoDocumento, nroDocumento: nroDocumento, clave: clave}), {responseType: 'text' as 'json'});
     }
 
 }

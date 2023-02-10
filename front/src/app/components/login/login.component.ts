@@ -67,10 +67,10 @@ export class LoginComponent implements OnInit {
 
   LogIn() {
     const documento = "DNI"
-    const nroDocumento = "3223232"
-    const clave = "123456";
+    const nroDocumento = "11000111"
+    const clave = "22222"
     if (this.form.invalid) {
-      return;
+      console.log('invalido')
     } else {
       this.loginService.login(documento, nroDocumento, clave).subscribe(
         (data) => {
