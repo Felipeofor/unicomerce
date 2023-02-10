@@ -9,7 +9,6 @@ mongoose.set("strictQuery", false);
 client.connect(() => {
 
     routerUTransacciones.get('/', (req, res) => {
-        res.header("Access-Control-Allow-Origin", "*");
         mongoose.connect(URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,

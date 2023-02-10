@@ -9,12 +9,12 @@
       <p class="logo">LOGO</p>
     </div>
 
-    <form class="loginForm" [formGroup]="loginForm" novalidate>
+    <form class="loginForm" [formGroup]="form" (ngSubmit)="LogIn()" novalidate>
       <div class="flex_column loginForm_div">
         <label>Tipo de documento</label>
         <mat-form-field appearance="outline">
           <div class="input">
-            <input matInput formControlName="documento">
+            <input type="text" matInput formControlName="tipoDocumento">
           </div>
           <mat-error>
             Ingrese un tipo de documento
@@ -26,7 +26,7 @@
         <label>Número de documento</label>
         <mat-form-field appearance="outline">
           <div class="input">
-            <input  matInput formControlName="numeroDocumento">
+            <input type="number" matInput formControlName="nroDocumento">
           </div>
           <mat-error>
             Ingrese un número de documento
@@ -38,7 +38,7 @@
         <label>Clave</label>
         <mat-form-field appearance="outline">
           <div class="input">
-            <input matInput formControlName="clave">
+            <input type="password" matInput formControlName="clave">
           </div>
           <mat-error>
             Ingrese una clave
@@ -47,7 +47,7 @@
       </div>
 
       <div class="botonera">
-        <button (click)="LogIn()" class="btn btn-primary"
+        <button type="submit" class="btn btn-primary"
                 aria-label="LOG IN">
           Ingresar
         </button>

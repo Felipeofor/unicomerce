@@ -11,17 +11,17 @@ client.connect(() => {
     const usuarios = client.db("test").collection("logins");
 
     routerUser.post("/", (req, res) => {
+        mongoose.connect(URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
         try {
             const {tipoDocumento, nroDocumento, clave} = req.body;
             // Usuario ya existe
             usuarios.findOne({nroDocumento: nroDocumento}).then((r) => {
-                mongoose.connect(URL, {
-                    useNewUrlParser: true,
-                    useUnifiedTopology: true,
-                });
                 // Usuario existe
                 if (r) {
-                        if (r.clave === clave) {
+                        if (r.clave === clave && r.tipoDocumento === tipoDocumento) {
                             res.status(200).send("Usuario existente");
                         } else {
                             res.status(200).send("Usuario o contraseña incorrectos");

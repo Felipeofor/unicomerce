@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {BalanceService} from "../../services/balance.service";
 import {UltimasTransaccionesService} from "../../services/ultimasTransacciones.service";
-import {provideRouter} from "@angular/router";
+import {LoginService} from "../../services/login.service";
+import {getMatLegacyTooltipInvalidPositionError} from "@angular/material/legacy-tooltip";
 
 @Component({
   selector: 'app-login',
@@ -11,27 +12,31 @@ import {provideRouter} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  public loginForm = new FormGroup({
-    documento: new FormControl('', [Validators.required, Validators.email]),
-    numeroDocumento: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    clave: new FormControl('', [Validators.required, Validators.minLength(6)]),
-  });
 
   constructor(
     private balanceService: BalanceService,
-    private ultimasTransaccionesService: UltimasTransaccionesService
-    ) { }
+    private ultimasTransaccionesService: UltimasTransaccionesService,
+    public fb: FormBuilder,
+    private loginService: LoginService
+  ) {}
 
   ngOnInit(): void {
     this.getBalance();
     this.getUltimasTransacciones();
   }
 
+  form = this.fb.group({
+    tipoDocumento: ['DNI', Validators.required],
+    nroDocumento: ['12000333', Validators.required],
+    clave: ['123456', Validators.required],
+  });
+
+
   getBalance(){
     try {
       this.balanceService.getBalance().subscribe(
         (data) => {
-          console.log(data);
+
         },
         (error) => {
           console.log(error);
@@ -47,7 +52,7 @@ export class LoginComponent implements OnInit {
     try {
       this.ultimasTransaccionesService.getUltimasTransacciones().subscribe(
         (data) => {
-          console.log(data);
+
         },
         (error) => {
           console.log(error);
@@ -60,8 +65,19 @@ export class LoginComponent implements OnInit {
   }
 
 
-  LogIn(){
-    console.log('login')
+  LogIn() {
+    const documento = "DNI"
+    const nroDocumento = "3223232"
+    const clave = "123456";
+    if (this.form.invalid) {
+      return;
+    } else {
+      this.loginService.login(documento, nroDocumento, clave).subscribe(
+        (data) => {
+          console.log(data);
+        }
+      );
+    }
   }
 
   registrate(){

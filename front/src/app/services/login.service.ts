@@ -5,7 +5,9 @@ import {environment} from "../../environment";
 
 //Modelos
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
   export class LoginService {
 
   constructor(private http: HttpClient) {
@@ -13,13 +15,13 @@ import {environment} from "../../environment";
 
   url: string = environment.url;
 
-
-    public login(user: string, password: string): Observable<any> {
-      const headers = new HttpHeaders().set('Content-Type', 'application/json');
-      console.log(user, password)
-      return this.http.post<any>(`${this.url}/login`, {user, password}, {headers});
+    public login(tipoDocumento: string , nroDocumento: string , clave: string ): Observable<any> {
+      const url = `${this.url}/login`;
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      });
+      return this.http.post<any>(url, {tipoDocumento, nroDocumento, clave}, {headers});
     }
-
-
 
 }

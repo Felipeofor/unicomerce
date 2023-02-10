@@ -14,7 +14,6 @@ client.connect(() => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
-        res.header("Access-Control-Allow-Origin", "*");
         // Traer todos los balances
         try {
             balance.find({}).then((r) => {
