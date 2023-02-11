@@ -5,6 +5,7 @@ const tarjeta = mongoose.model("tarjeta", {
     dateExp: String,
     number: String,
     cvv: String,
+    saldo: Number,
 });
 
 module.exports = tarjeta;

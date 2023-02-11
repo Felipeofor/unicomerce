@@ -6,10 +6,13 @@ import {ReactiveFormsModule} from "@angular/forms";
 
 //Components
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import {RegistrarComponent} from "./components/registrar/registrar.component";
+import { HomeComponent } from './pages/home/home.component';
+import {LoginComponent} from './pages/login/login.component';
+import {RegistrarComponent} from "./pages/registrar/registrar.component";
 import {SidenavComponent} from "./components/sidenav/sidenav.component";
+import {HeaderComponent} from "./components/header/header.component";
+import {MainComponent} from "./components/main/main.component";
+import {CreditCardComponent} from "./components/creditCard/creditCard.component";
 
 // Angular Material
 import {MatInputModule} from '@angular/material/input';
@@ -19,6 +22,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatIconModule} from "@angular/material/icon";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -26,21 +31,26 @@ import {MatIconModule} from "@angular/material/icon";
     HomeComponent,
     LoginComponent,
     RegistrarComponent,
-    SidenavComponent
+    SidenavComponent,
+    HeaderComponent,
+    MainComponent,
+    CreditCardComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-        MatFormFieldModule,
-        HttpClientModule,
-        MatListModule,
-        MatSidenavModule,
-        MatIconModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    HttpClientModule,
+    MatListModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatCardModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [

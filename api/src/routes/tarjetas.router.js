@@ -22,15 +22,32 @@ client.connect(() => {
         }
     });
 
+    // traer tarjeta por id
+    routerTarjetas.get('/:id', (req, res) => {
+        mongoose.connect(URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        try {
+            tarjetas.find({_id: req.params.id}).then(async (r) => {
+                res.status(200).send(await r);
+            });
+        } catch (error) {
+            res.status(400).send(error);
+        }
+    });
+
     routerTarjetas.post('/', (req, res) => {
-        const {name, dateExp, number, cvv} = req.body;
-        if (!name || !dateExp || !number || !cvv) {
+        const {name, dateExp, number, cvv, saldo} = req.body;
+        if (!name || !dateExp || !number || !cvv, !saldo) {
             res.send('Faltan datos');
+        } else {
             const newTarjeta = new tarjetas({
                 name: name,
                 dateExp: dateExp,
                 number: number,
                 cvv: cvv,
+                saldo: saldo
             });
             mongoose.connect(URL, {
                 useNewUrlParser: true,
@@ -39,8 +56,6 @@ client.connect(() => {
             newTarjeta.save().then((r) => {
                 res.send('Tarjeta creada');
             });
-        } else {
-            res.send('Faltan datos');
         }
     });
 

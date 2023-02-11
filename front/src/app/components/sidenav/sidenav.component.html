@@ -6,10 +6,9 @@
     </div>
 
     <mat-nav-list>
-      <div *ngFor="let item of data">
-
+      <div class="align" *ngFor="let item of data">
+        <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon" fontIcon="{{item.icon}}"></mat-icon>
         <a class="link" mat-list-item routerLink="{{item.link}}" routerLinkActive="active">
-          <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon" fontIcon="{{item.icon}}"></mat-icon>
           {{item.title}}
         </a>
       </div>
