@@ -5,7 +5,6 @@ const menu = mongoose.model("menu", {
     title: String,
     icon: String,
     link: String,
-    submenu: Array,
 });
 
 module.exports = menu;

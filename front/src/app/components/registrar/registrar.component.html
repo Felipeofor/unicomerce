@@ -9,7 +9,7 @@
       <p class="logo">LOGO</p>
     </div>
 
-    <form class="loginForm" [formGroup]="form" (ngSubmit)="LogIn()" novalidate>
+    <form class="loginForm" [formGroup]="form" (ngSubmit)="registrar()" novalidate>
       <div class="flex_column loginForm_div">
         <label>Tipo de documento</label>
         <mat-form-field appearance="outline">
@@ -49,7 +49,7 @@
       <div class="botonera">
         <button type="submit" class="btn btn-primary"
                 aria-label="LOG IN">
-          Ingresar
+          Registrarse
         </button>
       </div>
 
@@ -72,7 +72,7 @@
     </form>
 
     <div>
-      <p class="registrate" (click)="registrate()">¿No tenes cuenta? Registrate aquí</p>
+      <p class="registrate" (click)="volver()">¿Ya tenes cuenta? Ingresa</p>
     </div>
 
   </div>

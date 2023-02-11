@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
+import {LoginService} from "../../services/login.service";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'registrar-home',
+  templateUrl: './registrar.component.html',
+  styleUrls: ['./registrar.component.scss']
 })
-export class LoginComponent implements OnInit {
-
+export class RegistrarComponent implements OnInit {
 
   constructor(
     public fb: FormBuilder,
@@ -21,19 +21,17 @@ export class LoginComponent implements OnInit {
 
   form = this.fb.group({
     tipoDocumento: ['DNI', Validators.required],
-    nroDocumento: ['21321999', Validators.required],
+    nroDocumento: ['12000333', Validators.required],
     clave: [null, Validators.required],
   });
 
 
-  LogIn() {
-    if (this.form.valid) {
-      this.router.navigate(['home']);
-    }
+  registrar() {
+    this.router.navigate(['login']);
   }
 
-  registrate() {
-    this.router.navigate(['registrar']);
+  volver() {
+    this.router.navigate(['login']);
   }
 
 }
