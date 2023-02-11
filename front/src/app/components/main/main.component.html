@@ -1,4 +1,23 @@
 <section class="main">
+
   <h3 class="main_title">Inicio</h3>
-  <app-creditCard></app-creditCard>
+
+  <div class="main_title_flex">
+    <app-creditCard></app-creditCard>
+    <app-ingresos-egresos
+      leyenda="Ingresos"
+      monto="1000"
+      variacion="10"
+    ></app-ingresos-egresos>
+    <app-ingresos-egresos
+      leyenda="Ingresos"
+      monto="13000"
+      variacion="-10"
+    ></app-ingresos-egresos>
+  </div>
+
+  <div>
+    <app-balance></app-balance>
+  </div>
+
 </section>

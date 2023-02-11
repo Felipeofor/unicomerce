@@ -5,8 +5,8 @@ p, h2 {
 }
 
 .card {
-  max-width: 300px;
-  height: 180px;
+  min-width: 300px;
+  min-height: 180px;
   background-color: #353A61;
   border-radius: 25px;
   color: #fff;

@@ -1,23 +1,23 @@
-<section class="card">
+<section *ngFor="let data of card" class="card">
   <div>
     <div class="card_header">
       <h2 class="card_title">Mi saldo</h2>
-      <p class="card_value">$12,345,789</p>
+      <p class="card_value">{{monto}}</p>
     </div>
   </div>
 
   <div class="card_number">
-    <p>.... .... .... 1234</p>
+    <p>.... .... .... {{numeroTarjeta}}</p>
   </div>
 
   <div class="car_info">
     <div class="card_date">
       <p>Titular tarjeta</p>
-      <p>Nombre Apellido</p>
+      <p>{{data.name}}</p>
     </div>
     <div class="card_date">
       <p>Valido hasta</p>
-      <p>12/21</p>
+      <p>{{data.dateExp}}</p>
     </div>
   </div>
 

@@ -13,6 +13,8 @@ import {SidenavComponent} from "./components/sidenav/sidenav.component";
 import {HeaderComponent} from "./components/header/header.component";
 import {MainComponent} from "./components/main/main.component";
 import {CreditCardComponent} from "./components/creditCard/creditCard.component";
+import {IngresosEgresosComponent} from "./components/ingresos-egresos/ingresos-egresos.component";
+import {BalanceComponent} from "./components/balance/balance.component";
 
 // Angular Material
 import {MatInputModule} from '@angular/material/input';
@@ -25,6 +27,9 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatCardModule} from "@angular/material/card";
 
+// Charts
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +39,9 @@ import {MatCardModule} from "@angular/material/card";
     SidenavComponent,
     HeaderComponent,
     MainComponent,
-    CreditCardComponent
+    CreditCardComponent,
+    IngresosEgresosComponent,
+    BalanceComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +57,7 @@ import {MatCardModule} from "@angular/material/card";
     MatIconModule,
     MatToolbarModule,
     MatCardModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
