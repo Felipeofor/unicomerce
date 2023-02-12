@@ -10,6 +10,7 @@ import {LoaderService} from "../../services/loading.service";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  [x: string]: any;
 
   form: FormGroup = new FormGroup({})
 
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     public fb: FormBuilder,
     private router: Router,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
   ) {
   }
 
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('token', data);
             this.loaderService.setLoading(true);
             setTimeout(() => {
-              this.loaderService.setLoading(false);
+
               this.router.navigate(['home']);
             } , 500);
           }
