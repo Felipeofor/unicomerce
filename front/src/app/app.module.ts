@@ -28,6 +28,8 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatCardModule} from "@angular/material/card";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTableModule} from "@angular/material/table";
 
 // Charts
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -46,22 +48,24 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     BalanceComponent,
     UltimasTransaccionesComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    HttpClientModule,
-    MatListModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatCardModule,
-    NgxChartsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        HttpClientModule,
+        MatListModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatCardModule,
+        NgxChartsModule,
+        MatPaginatorModule,
+        MatTableModule
+    ],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [

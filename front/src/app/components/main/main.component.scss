@@ -13,3 +13,30 @@
     display: flex;
   }
 }
+
+.grid{
+  display: grid;
+  grid-gap: 1rem;
+  padding: 1rem;
+  grid-template-areas:
+  "a a a"
+  "b b b"
+  "c c c"
+  "d d d";
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 40px 240px 420px 420px;
+}
+
+.a{
+  grid-area: a;
+}
+
+.b{
+  grid-area: b;
+  padding: 1rem;
+}
+
+.c{
+  grid-area: c;
+  padding: 1rem;
+}
