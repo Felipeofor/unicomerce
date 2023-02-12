@@ -6,12 +6,10 @@ import {environment} from "../../environment";
 //Interfaces
 export interface UltimasTransacciones {
   name: String,
-  descripcion: String,
-  codigo: String,
-  price: Number,
-  stock: Number,
-  porcentaje: Number,
+  monto: Number,
   fecha: Date,
+  estado: String,
+  tipo: String,
 }
 
 @Injectable({
@@ -26,7 +24,7 @@ export class UltimasTransaccionesService {
 
 
   public getUltimasTransacciones(): Observable<UltimasTransacciones> {
-    const url = `${this.url}/ultimasTransacciones`;
+    const url = `${this.url}/ultimas-transacciones`;
     return this.http.get<UltimasTransacciones>(url);
   }
 }

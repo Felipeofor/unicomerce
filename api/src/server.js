@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 });
 app.use('/api/login', routerUser);
 app.use('/api/balance', routerBalance);
-app.use('/api/ultimasTransacciones', routerUTransacciones);
+app.use('/api/ultimas-transacciones', routerUTransacciones);
 app.use('/api/tarjetas', routerTarjetas);
 app.use('/api/menu', routerMenu);
 

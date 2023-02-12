@@ -26,15 +26,9 @@ client.connect(() => {
 
     routerBalance.post('/', (req, res) => {
         // crear balance
-        const {name, descripcion, codigo, price, stock, porcentaje, mes} = req.body;
-            const newBalance = new balance({
-            name: name,
-            descripcion: descripcion,
-            codigo: codigo,
-            price: price,
-            stock: stock,
-            porcentaje: porcentaje,
-            mes: mes,
+        const newBalance = new balance({
+            name: req.body.name,
+            series: req.body.series
         });
         try {
             mongoose.connect(URL, {

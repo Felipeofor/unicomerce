@@ -15,6 +15,8 @@ import {MainComponent} from "./components/main/main.component";
 import {CreditCardComponent} from "./components/creditCard/creditCard.component";
 import {IngresosEgresosComponent} from "./components/ingresos-egresos/ingresos-egresos.component";
 import {BalanceComponent} from "./components/balance/balance.component";
+import {UltimasTransaccionesComponent} from "./components/ultimas-transacciones/ultimas-transacciones.component";
+
 
 // Angular Material
 import {MatInputModule} from '@angular/material/input';
@@ -41,7 +43,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MainComponent,
     CreditCardComponent,
     IngresosEgresosComponent,
-    BalanceComponent
+    BalanceComponent,
+    UltimasTransaccionesComponent
   ],
   imports: [
     BrowserModule,

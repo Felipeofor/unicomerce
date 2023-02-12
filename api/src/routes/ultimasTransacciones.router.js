@@ -30,15 +30,13 @@ client.connect(() => {
     // Crea una transaccion
     routerUTransacciones.post('/', (req, res) => {
         try {
-            const {name, descripcion, codigo, price, stock, porcentaje, fecha} = req.body;
+            const {name, monto, fecha, estado, tipo} = req.body;
             const newUltimasTransacciones = new ultimasTransacciones({
                 name: name,
-                descripcion: descripcion,
-                codigo: codigo,
-                price: price,
-                stock: stock,
-                porcentaje: porcentaje,
+                monto: monto,
                 fecha: fecha,
+                estado: estado,
+                tipo: tipo,
             });
             mongoose.connect(URL, {
                 useNewUrlParser: true,

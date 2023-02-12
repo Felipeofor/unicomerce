@@ -5,12 +5,14 @@ import {environment} from "../../environment";
 
 // Interfaces
 export interface Balance {
-  name: string;
-  description: string;
-  codigo: string;
-  price: number;
-  stock: number;
-  portada: string;
+  name: String,
+  series: [
+    {
+      name: String,
+      value: Number,
+      porcentaje: Number,
+    }
+  ]
 }
 
 @Injectable({

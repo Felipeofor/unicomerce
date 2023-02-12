@@ -1,13 +1,11 @@
 const mongoose = require('mongoose');
 
-const ultimasTransacciones = mongoose.model('ultimasTransacciones', {
+const ultimasTransacciones = mongoose.model('ultimas-transacciones', {
     name: String,
-    descripcion: String,
-    codigo: String,
-    price: Number,
-    stock: Number,
-    porcentaje: Number,
+    monto: Number,
     fecha: Date,
+    estado: String,
+    tipo: String,
 });
 
 module.exports = ultimasTransacciones;

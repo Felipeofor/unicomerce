@@ -2,11 +2,13 @@ const mongoose = require("mongoose");
 
 const balance = mongoose.model("balance", {
     name: String,
-    descripcion: String,
-    codigo: String,
-    price: Number,
-    stock: Number,
-    porcentaje: Number,
+    series: [
+        {
+            name: String,
+            value: Number,
+            porcentaje: Number,
+        }
+    ]
 });
 
 module.exports = balance;

@@ -1,0 +1,15 @@
+<section class="conteiner">
+  <h2 class="table_title">Últimas transacciones</h2>
+  <table class="table table-striped">
+    <tbody>
+      <tr *ngFor="let transaction of transactions">
+        <td class="estado"><mat-icon style="color: {{changeColor(transaction?.estado)}}">{{changeIcon(transaction?.estado) || "help"}}</mat-icon></td>
+        <td>{{transaction.name}}</td>
+        <td>{{transaction.monto | currency: 'USD'}}</td>
+        <td>{{transaction.fecha | date: 'dd/MM/yyyy hh-mm-ss'}}</td>
+        <td>{{transaction.estado}}</td>
+        <td>...</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
