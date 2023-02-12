@@ -25,5 +25,10 @@ export class MenuService {
     return this.http.get<Menu[]>(url);
   }
 
+  public setMenu(menu: Menu): Observable<Menu> {
+    const url = `${this.url}/menu`;
+    return this.http.post<Menu>(url, menu);
+  }
+
 
 }
