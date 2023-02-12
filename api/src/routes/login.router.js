@@ -22,7 +22,6 @@ client.connect(() => {
             await usuarios.findOne({nroDocumento: nroDocumento}).then((r) => {
                 // Usuario existe
                 if (r) {
-                    console.log(r, clave, tipoDocumento)
                     if (r.clave === clave && r.tipoDocumento === tipoDocumento) {
                         res.status(200).send("Usuario existente");
                     } else {

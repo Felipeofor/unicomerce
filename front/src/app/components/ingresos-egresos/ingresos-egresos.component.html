@@ -1,10 +1,10 @@
 <section class="card">
   <div class="card_flex">
     <div class="card_flex">
-      <mat-icon class="icon_add">add</mat-icon>
+      <mat-icon class="icon_add">{{icono}}</mat-icon>
       <div class="card_header">
         <h2 class="card_title card_date_text">{{leyenda}}</h2>
-        <p class="card_value">${{monto}}</p>
+        <p class="card_value">{{monto | currency: 'USD'}}</p>
       </div>
     </div>
 
@@ -17,7 +17,6 @@
         <p class="card_date_text">Mes pasado</p>
       </div>
     </div>
-
   </div>
 
   <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">

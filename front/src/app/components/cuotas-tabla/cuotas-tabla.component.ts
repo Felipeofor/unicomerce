@@ -10,19 +10,6 @@ export interface PeriodicElement {
   symbol: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
-
 @Component({
   selector: 'app-cuotas-tabla',
   templateUrl: './cuotas-tabla.component.html',
@@ -30,10 +17,10 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class CuotasTablaComponent {
-  displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  displayedColumns: string[] = ['Monto Total', 'Cuotas', 'Fecha de emisión', 'Mensual', 'Tasa de interes', 'botones', 'mas'];
   selection = new SelectionModel<PeriodicElement>(true, []);
   public cuotas: any;
+  public dataSource: any;
 
   constructor(private cuotasService: CuotasService) {
   this.getCuotas();
@@ -43,7 +30,7 @@ export class CuotasTablaComponent {
     this.cuotasService.getCuotas().subscribe(
       (cuotas) => {
         this.cuotas = cuotas;
-        console.log(this.cuotas);
+        this.dataSource = new MatTableDataSource<PeriodicElement>(this.cuotas);
       },
     );
   }
@@ -72,4 +59,10 @@ export class CuotasTablaComponent {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
+
+  formatCurrency(value: string): string {
+    const monto = Number(value);
+    return new Intl.NumberFormat('es-AR', {style: 'currency', currency: 'ARS'}).format(monto);
+  }
+
 }

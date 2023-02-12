@@ -29,14 +29,12 @@ client.connect(() => {
                 useUnifiedTopology: true,
             });
             const {name, title, icon, link} = req.body;
-            console.log(name, title, icon, link)
             const newMenu = new menu({
                 name: name,
                 title: title,
                 icon: icon,
                 link: link,
             });
-            console.log(newMenu)
             newMenu.save().then((r) => {
                 res.send('Menu creado');
             });

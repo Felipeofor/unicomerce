@@ -34,6 +34,7 @@ import {MatTableModule} from "@angular/material/table";
 // Charts
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     NgxChartsModule,
     MatPaginatorModule,
     MatTableModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent],

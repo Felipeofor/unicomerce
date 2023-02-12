@@ -33,7 +33,6 @@ client.connect(() => {
             estado: req.body.estado,
             montoCuota: montoCuota,
         });
-        console.log(newCuota)
         try {
             mongoose.connect(URL, {
                 useNewUrlParser: true,
@@ -43,7 +42,6 @@ client.connect(() => {
                 res.status(200).send('Cuota creada')
             });
         } catch (error) {
-            console.log('Error: ' + error)
             res.status(400).send(error)
         }
     });
