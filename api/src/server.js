@@ -5,6 +5,7 @@ const routerBalance = require('./routes/balance.router.js');
 const routerUTransacciones = require("./routes/ultimasTransacciones.router.js");
 const routerTarjetas = require("./routes/tarjetas.router.js");
 const routerMenu = require("./routes/menu.router.js");
+const routerCuotas = require("./routes/cuotas.router.js");
 const app = express();
 
 app.use(express.json())
@@ -26,6 +27,7 @@ app.use('/api/balance', routerBalance);
 app.use('/api/ultimas-transacciones', routerUTransacciones);
 app.use('/api/tarjetas', routerTarjetas);
 app.use('/api/menu', routerMenu);
+app.use('/api/cuotas', routerCuotas);
 
 app.listen(config.PORT, () => {
     console.log(`Server running on port ${config.PORT}`);

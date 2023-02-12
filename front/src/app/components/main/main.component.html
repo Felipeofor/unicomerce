@@ -4,25 +4,31 @@
 
   <div class="main_title_flex b">
     <app-creditCard></app-creditCard>
-    <app-ingresos-egresos
-      leyenda="Ingresos"
-      monto="1000"
-      variacion="10"
-    ></app-ingresos-egresos>
-    <app-ingresos-egresos
-      leyenda="Ingresos"
-      monto="13000"
-      variacion="-10"
-    ></app-ingresos-egresos>
+    <div class="padding_left padding_top">
+      <app-ingresos-egresos
+        leyenda="Ingresos"
+        monto="1000"
+        variacion="10"
+      ></app-ingresos-egresos>
+    </div>
+    <div class="padding_left padding_top">
+      <app-ingresos-egresos
+        leyenda="Egresos"
+        monto="13000"
+        variacion="-10"
+      ></app-ingresos-egresos>
+    </div>
   </div>
 
   <div class="main_title_flex c">
     <app-balance></app-balance>
-    <app-ultimas-transacciones></app-ultimas-transacciones>
+    <div class="padding_left padding_top">
+      <app-ultimas-transacciones></app-ultimas-transacciones>
+    </div>
   </div>
 
-  <div class="d">
-
+  <div class="main_title_flex d">
+    <app-cuotas-tabla></app-cuotas-tabla>
   </div>
 
 </section>

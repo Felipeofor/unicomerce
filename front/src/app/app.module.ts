@@ -16,7 +16,7 @@ import {CreditCardComponent} from "./components/creditCard/creditCard.component"
 import {IngresosEgresosComponent} from "./components/ingresos-egresos/ingresos-egresos.component";
 import {BalanceComponent} from "./components/balance/balance.component";
 import {UltimasTransaccionesComponent} from "./components/ultimas-transacciones/ultimas-transacciones.component";
-
+import {CuotasTablaComponent} from "./components/cuotas-tabla/cuotas-tabla.component";
 
 // Angular Material
 import {MatInputModule} from '@angular/material/input';
@@ -33,6 +33,7 @@ import {MatTableModule} from "@angular/material/table";
 
 // Charts
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -46,26 +47,28 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     CreditCardComponent,
     IngresosEgresosComponent,
     BalanceComponent,
-    UltimasTransaccionesComponent
+    UltimasTransaccionesComponent,
+    CuotasTablaComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-        MatFormFieldModule,
-        HttpClientModule,
-        MatListModule,
-        MatSidenavModule,
-        MatIconModule,
-        MatToolbarModule,
-        MatCardModule,
-        NgxChartsModule,
-        MatPaginatorModule,
-        MatTableModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    HttpClientModule,
+    MatListModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatCardModule,
+    NgxChartsModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatCheckboxModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [
