@@ -35,6 +35,7 @@ import {MatTableModule} from "@angular/material/table";
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     IngresosEgresosComponent,
     BalanceComponent,
     UltimasTransaccionesComponent,
-    CuotasTablaComponent
+    CuotasTablaComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

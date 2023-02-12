@@ -11,39 +11,33 @@ client.connect(() => {
     const usuarios = client.db("test").collection("logins");
 
     routerUser.post("/", async (req, res) => {
-        console.log(req.body, 'antes de findOne');
+        res.header('Access-Control-Allow-Origin', '*');
         mongoose.connect(URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
-        try {
-            const {tipoDocumento, nroDocumento, clave} = req.body;
-            // Usuario ya existe
-            await usuarios.findOne({nroDocumento: nroDocumento}).then((r) => {
-                // Usuario existe
-                if (r) {
-                    if (r.clave === clave && r.tipoDocumento === tipoDocumento) {
-                        res.status(200).send("Usuario existente");
-                    } else {
-                        res.status(200).send("Usuario o contraseña incorrectos");
-                    }
+        usuarios.findOne().then((r) => {
+            try {
+                if (r.nroDocumento === req.body.nroDocumento && r.clave === req.body.clave) {
+                    res.status(200).send("Usuario logueado");
+                } else {
+                    res.status(200).send("Usuario o clave incorrectos");
                 }
-                // Usuario no existe
-                else {
-                    res.status(200).send("Usuario no existe");
-                }
-            });
-        } catch (error) {
-            res.status(400).send(error);
-        }
+            }
+            catch (error) {
+                res.status(400).send(error);
+            }
+        });
     });
 
     routerUser.post("/register", (req, res) => {
-            mongoose.connect(URL, {
+        res.header('Access-Control-Allow-Origin', '*');
+        mongoose.connect(URL, {
                 useNewUrlParser: true,
                 useUnifiedTopology: true,
             });
             try {
+                console.log(req.body, "req.body")
                 const {tipoDocumento, nroDocumento, clave} = req.body;
                 usuarios.findOne({nroDocumento: nroDocumento}).then((r) => {
                     if (r) {
@@ -59,7 +53,7 @@ client.connect(() => {
                                     clave: clave,
                                 });
                                 newLogin.save().then((r) => {
-                                    res.send("Usuario creado");
+                                    res.send("Usuario registrado correctamente");
                                 });
                             });
                         }

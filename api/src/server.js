@@ -6,10 +6,9 @@ const routerUTransacciones = require("./routes/ultimasTransacciones.router.js");
 const routerTarjetas = require("./routes/tarjetas.router.js");
 const routerMenu = require("./routes/menu.router.js");
 const routerCuotas = require("./routes/cuotas.router.js");
+const cors = require('cors');
 const app = express();
 
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, 	X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-	Method');
@@ -17,11 +16,15 @@ app.use((req, res, next) => {
     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
 });
+app.use(express.json())
+app.use(cors());
 
 // Routes
 app.get('/', (req, res) => {
     res.send('Hello World');
 });
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 app.use('/api/login', routerUser);
 app.use('/api/balance', routerBalance);
 app.use('/api/ultimas-transacciones', routerUTransacciones);

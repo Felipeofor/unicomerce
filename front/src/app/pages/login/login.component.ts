@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {LoginService} from "../../services/login.service";
+import {LoaderService} from "../../services/loading.service";
 
 @Component({
   selector: 'app-login',
@@ -9,26 +11,46 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
+  form: FormGroup = new FormGroup({})
 
   constructor(
+    private loginService: LoginService,
     public fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private loaderService: LoaderService
   ) {
   }
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      tipoDocumento: ['DNI', Validators.required],
+      nroDocumento: ['12000333', Validators.required],
+      clave: ['', Validators.required],
+    });
   }
-
-  form = this.fb.group({
-    tipoDocumento: ['DNI', Validators.required],
-    nroDocumento: ['21321999', Validators.required],
-    clave: [null, Validators.required],
-  });
 
 
   LogIn() {
+    const tipoDocumento = this.form.value.tipoDocumento!;
+    const nroDocumento = this.form.value.nroDocumento!;
+    const clave = this.form.value.clave!;
+
     if (this.form.valid) {
-      this.router.navigate(['home']);
+      this.loginService.login(tipoDocumento, nroDocumento, clave).subscribe(
+        (data) => {
+          if ( data === 'Usuario o clave incorrectos'){
+            alert(data);
+          }
+          else {
+            localStorage.setItem('token', data);
+            this.loaderService.setLoading(true);
+            setTimeout(() => {
+              this.loaderService.setLoading(false);
+              this.router.navigate(['home']);
+            } , 500);
+          }
+        }
+      );
     }
   }
 
