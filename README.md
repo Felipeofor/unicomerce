@@ -15,9 +15,9 @@ El que se encuentra por defecto se puede ingresar o crear uno nuevo en el boton 
 4. Todos los datos son consumidos de la base de datos.
 5. Se implemento Guards para que no se pueda acceder a las ruta "http://localhost:4200/home" sin estar logueado.
 
-Link bd: https://api-unicomerce.fly.dev/
+Link al deploy bd: https://api-unicomerce.fly.dev/
 
-Link al deploy: https://astonishing-starlight-a7aebc.netlify.app/
+#Link al deploy front: https://astonishing-starlight-a7aebc.netlify.app/
 
 Contraseña de usuario: 123456
 
