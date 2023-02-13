@@ -19,6 +19,8 @@ Link al deploy bd: https://api-unicomerce.fly.dev/
 
 ###################  Link al deploy front: https://astonishing-starlight-a7aebc.netlify.app/  ###################
 
+######################################    Contraseña de usuario: 123456    ######################################
+
 Contraseña de usuario: 123456
 
 rutas de la api: 
